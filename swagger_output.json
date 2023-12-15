@@ -1,0 +1,371 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "Nohtz API",
+      "description": "Documentation for Nohtz API"
+    },
+    "host": "https://nohtz-api.onrender.com",
+    "basePath": "/",
+    "tags": [
+      {
+        "name": "Endpoints",
+        "description": "Endpoints for managing notes"
+      }
+    ],
+    "schemes": [
+      "https",
+      "http"
+    ],
+    "securityDefinitions": {
+      "api_key": {
+        "type": "apiKey",
+        "name": "api_key",
+        "in": "header"
+      }
+    },
+    "consumes": [
+      "application/json"
+    ],
+    "produces": [
+      "application/json"
+    ],
+    "paths": {
+      "/users/register": {
+        "post": {
+          "tags": [
+            "Register"
+          ],
+          "description": "Endpoint to registera user",
+          "parameters": [
+            {
+              "name": "body",
+              "in": "body",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "example": "James"
+                  },
+                  "email": {
+                    "example": "james@email.com"
+                  },
+                  "password": {
+                    "example": "123@4"
+                  }
+                }
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            },
+            "500": {
+              "description": "Internal Server Error"
+            }
+          }
+        }
+      },
+      "/users/login": {
+        "post": {
+          "tags": [
+            "Login"
+          ],
+          "description": "Endpoint for user login",
+          "parameters": [
+            {
+              "name": "body",
+              "in": "body",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "email": {
+                    "example": "james@email.com"
+                  },
+                  "password": {
+                    "example": "123@4"
+                  }
+                }
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "500": {
+              "description": "Internal Server Error"
+            }
+          }
+        }
+      },
+      "/notes": {
+        "post": {
+          "tags": [
+            "Notes"
+          ],
+          "description": "Endpoint to register a note",
+          "parameters": [
+            {
+              "name": "auth-token",
+              "in": "header",
+              "type": "string"
+            },
+            {
+              "name": "body",
+              "in": "body",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "example": "Shopping list"
+                  },
+                  "body": {
+                    "example": "Bread, eggs, milk"
+                  },
+                  "done": {
+                    "example": false
+                  },
+                  "deadline": {
+                    "example": "23/12/2023"
+                  }
+                }
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "500": {
+              "description": "Internal Server Error"
+            }
+          }
+        },
+        "get": {
+          "tags": [
+            "Notes"
+          ],
+          "description": "Endpoint to get all notes",
+          "parameters": [
+            {
+              "name": "auth-token",
+              "in": "header",
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "500": {
+              "description": "Internal Server Error"
+            }
+          }
+        }
+      },
+      "/notes/search": {
+        "get": {
+          "tags": [
+            "Notes"
+          ],
+          "description": "Endpoint to search for a word",
+          "parameters": [
+            {
+              "name": "query",
+              "in": "query",
+              "type": "string"
+            },
+            {
+              "name": "auth-token",
+              "in": "header",
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "500": {
+              "description": "Internal Server Error"
+            }
+          }
+        }
+      },
+      "/notes/{id}": {
+        "get": {
+          "tags": [
+            "Notes"
+          ],
+          "description": "Endpoint to get a note",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "type": "string"
+            },
+            {
+              "name": "auth-token",
+              "in": "header",
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "500": {
+              "description": "Internal Server Error"
+            }
+          }
+        },
+        "put": {
+          "tags": [
+            "Notes"
+          ],
+          "description": "Endpoint to update a note",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "type": "string"
+            },
+            {
+              "name": "auth-token",
+              "in": "header",
+              "type": "string"
+            },
+            {
+              "name": "body",
+              "in": "body",
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "example": "Shopping list"
+                  },
+                  "body": {
+                    "example": "Bread, eggs, milk, tomato, butter"
+                  },
+                  "done": {
+                    "example": false
+                  },
+                  "deadline": {
+                    "example": "22/12/2023"
+                  }
+                }
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "500": {
+              "description": "Internal Server Error"
+            }
+          }
+        },
+        "delete": {
+          "tags": [
+            "Notes"
+          ],
+          "description": "Endpoint to delete a note",
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true,
+              "type": "string"
+            },
+            {
+              "name": "auth-token",
+              "in": "header",
+              "type": "string"
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "OK"
+            },
+            "401": {
+              "description": "Unauthorized"
+            },
+            "403": {
+              "description": "Forbidden"
+            },
+            "500": {
+              "description": "Internal Server Error"
+            }
+          }
+        }
+      }
+    },
+    "definitions": {
+      "Note": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "example": "Shopping list"
+          },
+          "body": {
+            "type": "string",
+            "example": "Bread, eggs, milk"
+          },
+          "done": {
+            "type": "boolean",
+            "example": false
+          },
+          "deadline": {
+            "type": "string",
+            "example": "23/12/2023"
+          }
+        }
+      },
+      "User": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "James"
+          },
+          "email": {
+            "type": "string",
+            "example": "james@email.com"
+          },
+          "password": {
+            "type": "string",
+            "example": "123@4"
+          }
+        }
+      }
+    }
+  }
