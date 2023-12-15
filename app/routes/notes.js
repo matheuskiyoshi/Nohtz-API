@@ -4,10 +4,10 @@ const Note = require('../models/note');
 const withAuth = require('../middlewares/auth');
 
 router.post('/', withAuth, async (req, res) => {
-    const { title, body } = req.body;
+    const { title, body, done, deadline } = req.body;
     
     try {
-        let note = new Note({ title: title, body: body, author: req.user._id });
+        let note = new Note({ title: title, body: body, done: done, deadline: deadline, author: req.user._id });
         await note.save();
         res.status(200).json(note);
     } catch (error) {
@@ -56,14 +56,14 @@ router.get('/:id', withAuth, async(req, res) => {
 })
 
 router.put('/:id', withAuth, async (req, res) => {
-    const { title, body } = req.body;
+    const { title, body, done, deadline } = req.body;
     const { id } = req.params;
 
     try {
         let note = await Note.findById(id);
         if(isOwner(req.user, note)){
             let note = await Note.findByIdAndUpdate(id, 
-                { $set: { title: title, body: body } },
+                { $set: { title: title, body: body, done: done, deadline: deadline } },
                 { upsert: true, 'new': true }
             );
 
