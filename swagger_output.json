@@ -5,7 +5,7 @@
       "title": "Nohtz API",
       "description": "Documentation for Nohtz API"
     },
-    "host": "https://nohtz-api.onrender.com",
+    "host": "nohtz-api.onrender.com",
     "basePath": "/",
     "tags": [
       {
