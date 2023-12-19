@@ -6,8 +6,8 @@ var cors = require('cors');
 const swaggerUi = require("swagger-ui-express")
 const swaggerFile = require("./swagger_output.json")
 
-var usersRouter = require('./app/routes/users');
-var notesRouter = require('./app/routes/notes');
+var usersRouter = require('./app/modules/user/routes/users');
+var notesRouter = require('./app/modules/note/routes/notes');
 
 var app = express();
 
