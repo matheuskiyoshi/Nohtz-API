@@ -3,7 +3,7 @@ const secret = process.env.JWT_TOKEN;
 
 const jwt = require('jsonwebtoken');
 
-const User = require('../models/user');
+const User = require('../modules/user/models/user');
 
 const WithAuth = (req, res, next) => {
     const token = req.headers['auth-token'];
