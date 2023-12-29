@@ -24,7 +24,7 @@ O projeto está organizado em módulos, incluindo:
 ## Documentação
 Para facilitar o entendimento e uso da API, foi incorporado o Swagger para a documentação. Acesse https://nohtz-api.onrender.com/doc ou `/doc` para explorar os endpoints disponíveis, seus parâmetros e respostas.
 
-	![backend-swagger](https://github.com/matheuskiyoshi/Nohtz-API/assets/26641380/998a3297-3995-4dc5-b7e0-420f394f43dc)
+	![backend-swagger](https://github-production-user-asset-6210df.s3.amazonaws.com/26641380/293433331-998a3297-3995-4dc5-b7e0-420f394f43dc.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20231229%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20231229T233215Z&X-Amz-Expires=300&X-Amz-Signature=a32d5aabcf9a1476fb1f2130dab559b899ee6734ac699fdc507e7d44dec5cd16&X-Amz-SignedHeaders=host&actor_id=26641380&key_id=0&repo_id=731274098)
 
 ## Implantação em produção
 
